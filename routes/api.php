@@ -19,7 +19,7 @@ use App\Http\Controllers\RegisterController;
 
 Route::post('login', [LoginController::class, 'login']);
 Route::post('register', [RegisterController::class, 'register']);
-Route::get('/form/data-lists', [APIController::class, 'formlists']);
+
 Route::middleware('auth:sanctum')->group(function () {
-    
+   Route::get('/form/data-lists', [APIController::class, 'formlists']); 
 });
