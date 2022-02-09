@@ -15,6 +15,10 @@ class CreateFormUsersTable extends Migration
     {
         Schema::create('form_users', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->integer('phone')->nullable();
+            $table->string('datebirth')->nullable();
+            $table->integer('user_gender')->nullable();
             $table->timestamps();
         });
     }

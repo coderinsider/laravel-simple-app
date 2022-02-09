@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-import HomePageViewPanel from './components/HomePageViewPanel.vue';
+import UserFormPanel from './components/UserFormPanel.vue';
 import Vue from 'vue';
 //window.Vue = require('vue').default;
 
@@ -33,6 +33,6 @@ const app = new Vue({
 });
 
 const homePage = new Vue({
-    el: '#homepage',
-    render: HomePageView => HomePageView(HomePageViewPanel)
+    el: '#userform',
+    render: UserForm => UserForm(UserFormPanel)
 })

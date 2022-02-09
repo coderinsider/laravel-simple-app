@@ -1,5 +1,4 @@
 <?php
-// namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +17,7 @@ Route::get('/', function () {
 });
 
 Route::get('/form', [App\Http\Controllers\FormController::class, 'index'])->name('formhome');
-
+Route::post('/form/create-record', [App\Http\Controllers\FormController::class, 'create'])->name('formcreate');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

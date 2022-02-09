@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Form;
+use App\Models\FormUser;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -12,9 +12,17 @@ class FormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(FormUser $formUser) {
+        $this->formUser = $formUser;
+    }
     public function index()
     {
         //
+        $data = [];
+        $data['page_title'] = "User Form";
+        $data['current_page'] = 'userform';
+        return view('public.form.index', $data);
     }
 
     /**
@@ -22,9 +30,20 @@ class FormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $req)
     {
         //
+        if($req->isMethod('post')) {
+            try {
+                $dataCreate = $this->formUser->create($req->input('saveRecords'));
+                if($dataCreate) {
+                    return response()->json(['status' => 200, 'message' => 'Create record successfully', 'data' => $dataCreate ], 200);
+                }
+            } catch(Exception $e) {
+                return response()->json(['status' => 500, 'message' => $e], 200);
+            }
+            
+        }
     }
 
     /**
